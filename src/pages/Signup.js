@@ -43,6 +43,7 @@ export default function Signup() {
       try {
         const response = await fetch(SummaryApi.SignUp.url, {
           method:"post",
+           credentials: "include",
           headers: {
             "Content-Type": "application/json",
           },
