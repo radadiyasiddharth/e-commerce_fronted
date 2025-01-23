@@ -107,7 +107,7 @@ export default function Header() {
             {user?._id ? (
               <button
                 className="px-3 py-1 text-white rounded-full  bg-red-600 hover:bg-red-700"
-                onClick={handleLogout()}
+                onClick={() => {handleLogout()}}
               >
                 Logout
               </button>

@@ -1,4 +1,4 @@
-const backendDomain = "https://e-commerce-backend-1-odb2.onrender.com"
+const backendDomain = "https://e-commerce-backend-4-9244.onrender.com"
 
 
 const SummaryApi = {
