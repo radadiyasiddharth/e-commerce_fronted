@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import SummaryApi from "../comman";
 import { toast } from "react-toastify";
 import Context from "../context";
+import axios from "axios";
 export default function Login() {
   const [showPassword, setshowPassword] = useState(false);
   const [data, setdata] = useState({
@@ -27,18 +28,23 @@ export default function Login() {
 
   const handlesubmit = async(e) => {
     e.preventDefault();
-    console.log("data",data)
-    const dataResponse  = await fetch(SummaryApi.SignIn.url,{
-      method:SummaryApi.SignIn.method,
-      credentials:"include",
-      headers:{
-        "content-type":"application/json"
-      },
-      body: JSON.stringify(data)
-    })
-    const dataapi = await dataResponse.json()
-    if(dataapi.success){
-      toast.success(dataapi.message)
+    const dataResponse = await axios.post(SummaryApi.SignIn.url, data, {
+      withCredentials: true,
+    });
+    
+    //  fetch(SummaryApi.SignIn.url,{
+    //   method:SummaryApi.SignIn.method,
+    //   credentials:"include",
+    //   headers:{
+    //     "content-type":"application/json"
+    //   },
+    //   body: JSON.stringify(data)
+    // })
+    const dataapi =  dataResponse
+    console.log("data",dataapi)
+
+    if(dataapi.data.success){
+      toast.success(dataapi.data.message)
       navigate("/")
       fetchUserDetail()
       fetchuseraddtocount()
