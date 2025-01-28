@@ -27,6 +27,7 @@ export default function Login() {
 
   const handlesubmit = async(e) => {
     e.preventDefault();
+    console.log("data",data)
     const dataResponse  = await fetch(SummaryApi.SignIn.url,{
       method:SummaryApi.SignIn.method,
       credentials:"include",
@@ -46,6 +47,8 @@ export default function Login() {
       toast.error(dataapi.message)
   }
   };
+
+
 
 
 
